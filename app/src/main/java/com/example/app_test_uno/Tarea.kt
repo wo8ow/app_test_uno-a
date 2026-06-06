@@ -3,16 +3,40 @@ package com.example.app_test_uno
 import com.google.gson.annotations.SerializedName
 
 data class Tarea(
+    @SerializedName("id")
     val id: Int? = null,
-    val titulo: String,
-    val descripcion: String?,
+
+    @SerializedName("titulo")
+    val titulo: String = "",
+
+    @SerializedName("descripcion")
+    val descripcion: String? = "",
+
+    @SerializedName("estado")
     val estado: String? = "pendiente",
-    @SerializedName("fecha_creacion") val fechaCreacion: String? = null
+
+    @SerializedName("fecha_creacion")
+    val fechaCreacion: String? = null
 )
 
-// Clases de respuesta genericas de nuestra API
+data class CrearTareaRequest(
+    @SerializedName("titulo")
+    val titulo: String,
+
+    @SerializedName("descripcion")
+    val descripcion: String? = "",
+
+    @SerializedName("estado")
+    val estado: String = "pendiente"
+)
+
 data class ApiResponse(
-    val success: Boolean,
-    val message: String?,
-    val data: List<Tarea>?
+    @SerializedName("success")
+    val success: Boolean = false,
+
+    @SerializedName("message")
+    val message: String? = null,
+
+    @SerializedName("data")
+    val data: List<Tarea>? = emptyList()
 )
